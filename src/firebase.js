@@ -2,13 +2,18 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCuG4ad6rj67Itan_KiyQozBpPkOQNolxw",
-  authDomain: "posts-app-a6238.firebaseapp.com",
-  projectId: "posts-app-a6238",
-  storageBucket: "posts-app-a6238.appspot.com",
-  messagingSenderId: "711195804892",
-  appId: "1:711195804892:web:a6ef31365f11b49419a019",
+  apiKey: "AIzaSyAuCoX5s0WUwvYvwtIzUU5lG2RoiUIls18",
+
+  authDomain: "login-app-6032e.firebaseapp.com",
+
+  projectId: "login-app-6032e",
+
+  storageBucket: "login-app-6032e.appspot.com",
+
+  messagingSenderId: "1018590560004",
+
+  appId: "1:1018590560004:web:bd3576b3ab4489731a5a51",
 };
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app); // It provides connection to the firebase auth service.
+const app = initializeApp(firebaseConfig); // parametre olarak firebaseConfig'i vermeliyiz. diğer dosyalarda çok kullanmayacağımız için export etmedik.
+export const auth = getAuth(app);
