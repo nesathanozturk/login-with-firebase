@@ -1,9 +1,17 @@
-import "./App.css";
+import { Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
     <>
-      <h1>wkeqe</h1>
+      <Routes>
+        <Route path="/" element={<Main />}>
+          <Route path="/" element={<Home />} />
+        </Route>
+        <Route path="/" element={<Auth />}>
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/sign-in" element={<SignIn />} />
+        </Route>
+      </Routes>
     </>
   );
 };
