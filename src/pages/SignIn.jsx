@@ -2,7 +2,7 @@ import { auth } from "../firebase";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useState } from "react";
 import Loading from "../components/Loading";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Box,
   Stack,
@@ -18,17 +18,11 @@ const SignIn = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
   if (loading) {
     return <Loading />;
-  }
-
-  if (user) {
-    return <Navigate to="/" replace />;
-  } else {
-    return <Navigate to="sign-in" replace />;
   }
 
   return (
@@ -50,7 +44,7 @@ const SignIn = () => {
       <Avatar>
         <LockIcon />
       </Avatar>
-      <Typography variant="h4">Sign Up</Typography>
+      <Typography variant="h4">Sign In</Typography>
       <Stack spacing={2} sx={{ width: "100%" }}>
         <TextField
           type="text"
@@ -62,7 +56,7 @@ const SignIn = () => {
           onChange={(e) => setName(e.target.value)}
         />
         {error && (
-          <Typography variant="body2" color="error">
+          <Typography variant="body2" color="primary">
             {error.message}
           </Typography>
         )}

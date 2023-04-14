@@ -1,7 +1,6 @@
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useState } from "react";
 import { auth } from "../firebase";
-import { Navigate } from "react-router-dom";
 import {
   Box,
   Stack,
@@ -13,20 +12,17 @@ import {
 import SendIcon from "@mui/icons-material/Send";
 import LockIcon from "@mui/icons-material/Lock";
 import Loading from "../components/Loading";
+import { Navigate, Link } from "react-router-dom";
 
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  const [createUserWithEmailAndPassword, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
   if (loading) {
     return <Loading />;
-  }
-
-  if (user) {
-    return <Navigate to="/sign-in" replace />;
   }
 
   return (
@@ -83,6 +79,7 @@ const SignUp = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </Stack>
+      <Link to="/sign-in">You have already an account? Sign in!</Link>
       <Button
         type="submit"
         onClick={() => createUserWithEmailAndPassword(email, password)}
