@@ -11,7 +11,7 @@ const Main = () => {
   }
 
   if (!user) {
-    return <Navigate to="/sign-in" replace />;
+    return <Navigate to="/sign-up" replace />;
   }
 
   return <Outlet />;
