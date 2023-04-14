@@ -16,6 +16,9 @@ body {
   height: 100vh;
   font-family: "Poppins", sans-serif;
   background-color: #696ef8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 ul {
