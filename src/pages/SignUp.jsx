@@ -5,13 +5,14 @@ import { Navigate } from "react-router-dom";
 import {
   Box,
   Stack,
-  Button,
+  Avatar,
   Typography,
   TextField,
-  Avatar,
+  Button,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import LockIcon from "@mui/icons-material/Lock";
+import Loading from "../components/Loading";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -20,12 +21,8 @@ const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
-  if (error) {
-    return <h1>Error: {error.message}</h1>;
-  }
-
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
 
   if (user) {
@@ -62,6 +59,11 @@ const SignUp = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        {error && (
+          <Typography variant="body2" color="error">
+            {error.message}
+          </Typography>
+        )}
         <TextField
           type="email"
           id="outlined-basic"
