@@ -3,6 +3,7 @@ import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useState } from "react";
 import Loading from "../components/Loading";
 import { Link } from "react-router-dom";
@@ -30,12 +31,22 @@ const SignIn = () => {
     return <Loading />;
   }
 
-  const handleSignIn = () => {
+  const handleSingIn = () => {
     if (name === "" || email === "" || password === "") {
       alert("Please fill in all fields");
     } else {
       signInWithEmailAndPassword(email, password);
     }
+  };
+
+  const handleSignInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+
+    signInWithPopup(auth, provider)
+      .then((re) => {
+        console.log(re);
+      })
+      .catch((e) => console.log(e));
   };
 
   return (
@@ -98,7 +109,7 @@ const SignIn = () => {
       <Link to="/sign-up">Don't have an account? Sign up!</Link>
       <Button
         type="submit"
-        onClick={handleSignIn}
+        onClick={handleSingIn}
         variant="contained"
         endIcon={<SendIcon />}
         size="large"
@@ -115,7 +126,7 @@ const SignIn = () => {
         Sign in
       </Button>
       <Button
-        onClick={() => signInWithGoogle()}
+        onClick={handleSignInWithGoogle}
         variant="contained"
         endIcon={<GoogleIcon />}
         size="large"
