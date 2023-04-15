@@ -1,6 +1,6 @@
 import { auth } from "../firebase";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useState } from "react";
 import Loading from "../components/Loading";
 import { Link } from "react-router-dom";
@@ -38,11 +38,9 @@ const SignIn = () => {
   const handleSignInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
 
-    signInWithPopup(auth, provider)
-      .then((re) => {
-        console.log(re);
-      })
-      .catch((e) => console.log(e));
+    signInWithPopup(auth, provider).then((result) => {
+      alert("You logged in with Google!");
+    });
   };
 
   return (
