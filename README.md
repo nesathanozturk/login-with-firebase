@@ -1,6 +1,6 @@
 <h1>About</h1>
 
-<p>Firebase authentication example<p>
+<p>This repository is Authentication project.<p>
 
 ## 🧰 Technologies Used
 
