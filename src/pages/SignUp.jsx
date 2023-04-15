@@ -12,7 +12,7 @@ import {
 import SendIcon from "@mui/icons-material/Send";
 import LockIcon from "@mui/icons-material/Lock";
 import Loading from "../components/Loading";
-import { Navigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -33,9 +33,9 @@ const SignUp = () => {
         jusifyContent: "center",
         alignItems: "center",
         gap: "1.5rem",
+        width: "31.25rem",
         padding: "2rem",
         backgroundColor: "white",
-        width: "500px",
         textAlign: "center",
         borderRadius: "10px",
         boxShadow: "5px 5px 10px 0 rgba(0, 0, 0, 0.1)",

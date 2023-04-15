@@ -12,7 +12,7 @@ import {
   Button,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import LockIcon from "@mui/icons-material/Lock";
+import PersonIcon from "@mui/icons-material/Person";
 
 const SignIn = () => {
   const [name, setName] = useState("");
@@ -33,16 +33,16 @@ const SignIn = () => {
         jusifyContent: "center",
         alignItems: "center",
         gap: "1.5rem",
+        width: 500,
         padding: "2rem",
         backgroundColor: "white",
-        width: "500px",
         textAlign: "center",
         borderRadius: "10px",
         boxShadow: "5px 5px 10px 0 rgba(0, 0, 0, 0.1)",
       }}
     >
       <Avatar>
-        <LockIcon />
+        <PersonIcon />
       </Avatar>
       <Typography variant="h4">Sign In</Typography>
       <Stack spacing={2} sx={{ width: "100%" }}>
@@ -79,7 +79,7 @@ const SignIn = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </Stack>
-      <Link to="/sign-up">Don't have an account? Sign up</Link>
+      <Link to="/sign-up">Don't have an account? Sign up!</Link>
       <Button
         type="submit"
         onClick={() => signInWithEmailAndPassword(email, password)}
