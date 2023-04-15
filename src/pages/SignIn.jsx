@@ -1,8 +1,5 @@
 import { auth } from "../firebase";
-import {
-  useSignInWithEmailAndPassword,
-  useSignInWithGoogle,
-} from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useState } from "react";
 import Loading from "../components/Loading";
@@ -25,7 +22,6 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [signInWithEmailAndPassword, loading, error] =
     useSignInWithEmailAndPassword(auth);
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
 
   if (loading) {
     return <Loading />;

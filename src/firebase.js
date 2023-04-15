@@ -15,5 +15,5 @@ const firebaseConfig = {
   appId: "1:1018590560004:web:bd3576b3ab4489731a5a51",
 };
 
-const app = initializeApp(firebaseConfig); // parametre olarak firebaseConfig'i vermeliyiz. diğer dosyalarda çok kullanmayacağımız için export etmedik.
+const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
