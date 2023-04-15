@@ -1,5 +1,8 @@
 import { auth } from "../firebase";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { useState } from "react";
 import Loading from "../components/Loading";
 import { Link } from "react-router-dom";
@@ -13,6 +16,7 @@ import {
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import PersonIcon from "@mui/icons-material/Person";
+import GoogleIcon from "@mui/icons-material/Google";
 
 const SignIn = () => {
   const [name, setName] = useState("");
@@ -20,10 +24,19 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [signInWithEmailAndPassword, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
 
   if (loading) {
     return <Loading />;
   }
+
+  const handleSignIn = () => {
+    if (name === "" || email === "" || password === "") {
+      alert("Please fill in all fields");
+    } else {
+      signInWithEmailAndPassword(email, password);
+    }
+  };
 
   return (
     <Box
@@ -33,7 +46,7 @@ const SignIn = () => {
         jusifyContent: "center",
         alignItems: "center",
         gap: "1.5rem",
-        width: 500,
+        width: "31.25rem",
         padding: "2rem",
         backgroundColor: "white",
         textAlign: "center",
@@ -54,6 +67,7 @@ const SignIn = () => {
           variant="outlined"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
         />
         {error && (
           <Typography variant="body2" color="primary">
@@ -68,6 +82,7 @@ const SignIn = () => {
           variant="outlined"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <TextField
           type="password"
@@ -77,12 +92,13 @@ const SignIn = () => {
           variant="outlined"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
       </Stack>
       <Link to="/sign-up">Don't have an account? Sign up!</Link>
       <Button
         type="submit"
-        onClick={() => signInWithEmailAndPassword(email, password)}
+        onClick={handleSignIn}
         variant="contained"
         endIcon={<SendIcon />}
         size="large"
@@ -97,6 +113,22 @@ const SignIn = () => {
         }}
       >
         Sign in
+      </Button>
+      <Button
+        onClick={() => signInWithGoogle()}
+        variant="contained"
+        endIcon={<GoogleIcon />}
+        size="large"
+        sx={{
+          backgroundColor: "warning.main",
+          width: "100%",
+          padding: "0.5rem",
+          "&:hover": {
+            backgroundColor: "warning.dark",
+          },
+        }}
+      >
+        Sign in with Google
       </Button>
     </Box>
   );

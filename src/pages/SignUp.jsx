@@ -25,6 +25,14 @@ const SignUp = () => {
     return <Loading />;
   }
 
+  const handleSingUp = () => {
+    if (name === "" || email === "" || password === "") {
+      alert("Please fill in all fields");
+    } else {
+      createUserWithEmailAndPassword(email, password);
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -82,7 +90,7 @@ const SignUp = () => {
       <Link to="/sign-in">You have already an account? Sign in!</Link>
       <Button
         type="submit"
-        onClick={() => createUserWithEmailAndPassword(email, password)}
+        onClick={handleSingUp}
         variant="contained"
         endIcon={<SendIcon />}
         size="large"
