@@ -1,5 +1,5 @@
 import { Outlet, Navigate } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth"; // Artık kullanıcı giriş yapmış mı yoksa yapmamış mı diye kontrol edebiliriz.
+import { useAuthState } from "react-firebase-hooks/auth"; 
 import { auth } from "../firebase";
 import Loading from "./Loading";
 
